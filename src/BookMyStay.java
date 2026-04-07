@@ -40,7 +40,7 @@ class BookingRequestQueue {
     }
 }
 
-public class UseCase5BookingRequestQueue {
+public class BookMyStay {
     public static void main(String[] args) {
 
         BookingRequestQueue requestQueue = new BookingRequestQueue();

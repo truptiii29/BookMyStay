@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class UC12{
+public class BookMyStay {
 
     /**
      * CLASS - RoomInventory

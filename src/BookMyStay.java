@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class UC8 {
+public class BookMyStay {
 
     // --- REUSABLE COMPONENTS ---
     static class RoomInventory {

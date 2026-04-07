@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class UC9
+public class BookMyStay
 {
 
     /**

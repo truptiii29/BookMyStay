@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class UC11bms {
+public class BookMyStay {
 
     /**
      * CLASS - NotificationService

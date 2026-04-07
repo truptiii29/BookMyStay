@@ -34,7 +34,7 @@ class SuiteRoom extends Room {
     }
 }
 
-public class BookMyStay {
+public class UseCase2RoomInitialization {
     public static void main(String[] args) {
 
         int singleAvailable = 5;

@@ -85,7 +85,7 @@ class BookingService {
     }
 }
 
-public class UseCase6RoomAllocationService {
+public class BookMyStay {
     public static void main(String[] args) {
 
         RoomInventory inventory = new RoomInventory();

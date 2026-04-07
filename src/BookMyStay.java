@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class UC7 {
+public class BookMyStay {
 
     // --- FROM PREVIOUS USE CASES ---
     static class Room {

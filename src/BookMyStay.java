@@ -55,7 +55,7 @@ class RoomInventory {
     }
 }
 
-public class UseCase4RoomSearch {
+public class BookMyStay {
     public static void main(String[] args) {
 
         RoomInventory inventory = new RoomInventory();

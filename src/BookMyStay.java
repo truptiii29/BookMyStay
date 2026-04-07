@@ -1,82 +1,81 @@
-abstract class Room {
-    protected int roomNumber;
-    protected int numberOfBeds;
-    protected double price;
+import java.util.HashMap;
 
-    public Room(int roomNumber, int numberOfBeds, double price) {
-        this.roomNumber = roomNumber;
-        this.numberOfBeds = numberOfBeds;
+abstract class Room {
+    private int beds;
+    private double price;
+    private String type;
+
+    public Room(String type, int beds, double price) {
+        this.type = type;
+        this.beds = beds;
         this.price = price;
     }
 
-    public abstract void displayRoomDetails();
+    public String getType() {
+        return type;
+    }
+
+    public void displayDetails() {
+        System.out.println("Room Type: " + type);
+        System.out.println("Beds: " + beds);
+        System.out.println("Price: ₹" + price);
+    }
 }
 
 class SingleRoom extends Room {
-
-    public SingleRoom(int roomNumber, int numberOfBeds, double price) {
-        super(roomNumber, numberOfBeds, price);
-    }
-
-    @Override
-    public void displayRoomDetails() {
-        System.out.println("Room Type: Single Room");
-        System.out.println("Room Number: " + roomNumber);
-        System.out.println("Beds: " + numberOfBeds);
-        System.out.println("Price: " + price);
+    public SingleRoom() {
+        super("Single Room", 1, 2000);
     }
 }
 
 class DoubleRoom extends Room {
-
-    public DoubleRoom(int roomNumber, int numberOfBeds, double price) {
-        super(roomNumber, numberOfBeds, price);
-    }
-
-    @Override
-    public void displayRoomDetails() {
-        System.out.println("Room Type: Double Room");
-        System.out.println("Room Number: " + roomNumber);
-        System.out.println("Beds: " + numberOfBeds);
-        System.out.println("Price: " + price);
+    public DoubleRoom() {
+        super("Double Room", 2, 3500);
     }
 }
 
 class SuiteRoom extends Room {
-
-    public SuiteRoom(int roomNumber, int numberOfBeds, double price) {
-        super(roomNumber, numberOfBeds, price);
-    }
-
-    @Override
-    public void displayRoomDetails() {
-        System.out.println("Room Type: Suite Room");
-        System.out.println("Room Number: " + roomNumber);
-        System.out.println("Beds: " + numberOfBeds);
-        System.out.println("Price: " + price);
+    public SuiteRoom() {
+        super("Suite Room", 3, 6000);
     }
 }
 
-public class BookMyStay {
+class RoomInventory {
+    private HashMap<String, Integer> inventory;
+
+    public RoomInventory() {
+        inventory = new HashMap<>();
+        inventory.put("Single Room", 5);
+        inventory.put("Double Room", 3);
+        inventory.put("Suite Room", 0);
+    }
+
+    public int getAvailability(String type) {
+        return inventory.getOrDefault(type, 0);
+    }
+}
+
+public class UseCase4RoomSearch {
     public static void main(String[] args) {
 
-        Room singleRoom = new SingleRoom(101, 1, 2000);
-        Room doubleRoom = new DoubleRoom(201, 2, 3500);
-        Room suiteRoom = new SuiteRoom(301, 4, 8000);
+        RoomInventory inventory = new RoomInventory();
 
-        int singleRoomAvailable = 5;
-        int doubleRoomAvailable = 3;
-        int suiteRoomAvailable = 2;
+        Room[] rooms = {
+                new SingleRoom(),
+                new DoubleRoom(),
+                new SuiteRoom()
+        };
 
-        System.out.println("=== Room Details & Availability ===\n");
+        System.out.println("----- Available Rooms -----\n");
 
-        singleRoom.displayRoomDetails();
-        System.out.println("Available Rooms: " + singleRoomAvailable + "\n");
+        for (Room room : rooms) {
+            int available = inventory.getAvailability(room.getType());
 
-        doubleRoom.displayRoomDetails();
-        System.out.println("Available Rooms: " + doubleRoomAvailable + "\n");
-
-        suiteRoom.displayRoomDetails();
-        System.out.println("Available Rooms: " + suiteRoomAvailable + "\n");
+            if (available > 0) {
+                room.displayDetails();
+                System.out.println("Available: " + available);
+                System.out.println();
+            }
+        }
     }
 }

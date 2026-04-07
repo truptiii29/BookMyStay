@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class BookMyStay.java {
+public class BookMyStay {
 
     /**
      * CLASS - Room
